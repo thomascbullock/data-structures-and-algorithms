@@ -16,7 +16,7 @@ public class ArrayShift {
                 newArray[i+1] = arrayToShift[i];
             }
         }
-        
+
         return newArray;
     }
 
