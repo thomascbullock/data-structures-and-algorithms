@@ -15,7 +15,7 @@ public class LinkedListTest {
         testListTwo.insert("itemOne");
         testListTwo.insert("itemTwo");
         testListTwo.insert("itemThree");
-        assertEquals("{itemOne} -> {itemTwo} -> {itemThree} ->  NULL", testListTwo.toString());
+        assertEquals("{itemThree} -> {itemTwo} -> {itemOne} ->  NULL", testListTwo.toString());
     }
 
     @Test public void testIncludes() {
@@ -25,4 +25,33 @@ public class LinkedListTest {
         assertTrue(testListThree.includes("itemOne"));
         assertFalse(testListThree.includes("itemThree"));
     }
+
+    @Test public void testAppend() {
+        LinkedList testListFour = new LinkedList();
+        //insert goes at the front so I'm putting these two in backward name-wise
+        testListFour.insert("itemTwo");
+        testListFour.insert("itemOne");
+        //append goes at the back
+        testListFour.append("itemThree");
+        assertEquals("{itemOne} -> {itemTwo} -> {itemThree} ->  NULL", testListFour.toString());
+    }
+
+    @Test public void testBefore(){
+        LinkedList testListFive = new LinkedList();
+
+        testListFive.insert("itemThree");
+        testListFive.insert("itemOne");
+        testListFive.insertBefore("itemThree", "itemTwo");
+        assertEquals("{itemOne} -> {itemTwo} -> {itemThree} ->  NULL", testListFive.toString());
+    }
+
+    @Test public void testAfter(){
+        LinkedList testListSix = new LinkedList();
+        testListSix.insert("itemTwo");
+        testListSix.insert("itemOne");
+        testListSix.insertAfter("itemTwo", "itemThree");
+        assertEquals("{itemOne} -> {itemTwo} -> {itemThree} ->  NULL", testListSix.toString());
+    }
+
+
 }
