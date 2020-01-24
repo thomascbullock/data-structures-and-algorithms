@@ -15,7 +15,7 @@ public class LinkedListTest {
         testListTwo.insert("itemOne");
         testListTwo.insert("itemTwo");
         testListTwo.insert("itemThree");
-        assertEquals("{itemThree} -> {itemTwo} -> {itemOne} ->  NULL", testListTwo.toString());
+        assertEquals("{itemThree} -> {itemTwo} -> {itemOne} -> NULL", testListTwo.toString());
     }
 
     @Test public void testIncludes() {
@@ -33,7 +33,7 @@ public class LinkedListTest {
         testListFour.insert("itemOne");
         //append goes at the back
         testListFour.append("itemThree");
-        assertEquals("{itemOne} -> {itemTwo} -> {itemThree} ->  NULL", testListFour.toString());
+        assertEquals("{itemOne} -> {itemTwo} -> {itemThree} -> NULL", testListFour.toString());
     }
 
     @Test public void testBefore(){
@@ -42,7 +42,7 @@ public class LinkedListTest {
         testListFive.insert("itemThree");
         testListFive.insert("itemOne");
         testListFive.insertBefore("itemThree", "itemTwo");
-        assertEquals("{itemOne} -> {itemTwo} -> {itemThree} ->  NULL", testListFive.toString());
+        assertEquals("{itemOne} -> {itemTwo} -> {itemThree} -> NULL", testListFive.toString());
     }
 
     @Test public void testAfter(){
@@ -50,8 +50,30 @@ public class LinkedListTest {
         testListSix.insert("itemTwo");
         testListSix.insert("itemOne");
         testListSix.insertAfter("itemTwo", "itemThree");
-        assertEquals("{itemOne} -> {itemTwo} -> {itemThree} ->  NULL", testListSix.toString());
+        assertEquals("{itemOne} -> {itemTwo} -> {itemThree} -> NULL", testListSix.toString());
     }
 
+    @Test public void testKth(){
+        LinkedList testListSeven = new LinkedList();
+        testListSeven.insert("itemFive");
+        testListSeven.insert("itemFour");
+        testListSeven.insert("itemThree");
+        testListSeven.insert("itemTwo");
+        testListSeven.insert("itemOne");
+        assertEquals("itemFive", testListSeven.kthFromTheEnd(0));
+    }
+
+    @Test public void testMerge(){
+        LinkedList testListEight = new LinkedList();
+        LinkedList testListNine = new LinkedList();
+
+        testListEight.insert("E");
+        testListEight.insert("C");
+        testListEight.insert("A");
+        testListNine.insert("F");
+        testListNine.insert("D");
+        testListNine.insert("B");
+        assertEquals("{A} -> {C} -> {E} -> NULL", testListEight.toString());
+    }
 
 }

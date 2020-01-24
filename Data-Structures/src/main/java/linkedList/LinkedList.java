@@ -14,7 +14,7 @@ public class LinkedList {
 
         while (current != null) {
             if (current.getNext() == null) {
-                returnString = returnString + " NULL";
+                returnString = returnString + "NULL";
             } else {
                 returnString = returnString + "{"+ current.getNext().getValue() + "} -> ";
             }
@@ -38,7 +38,7 @@ public class LinkedList {
     public boolean includes (String valueToFind) {
         Node c = this.head;
         while (c != null) {
-            if (c.getValue() == valueToFind) {
+            if (c.getValue().equals(valueToFind)) {
                 return true;
             }
             c = c.getNext();
@@ -62,7 +62,7 @@ public class LinkedList {
     public void insertBefore (String valueBefore, String newValue) {
         Node c  = this.head;
         while (c != null) {
-            if (c.getNext() != null && c.getNext().getValue() == valueBefore) {
+            if (c.getNext() != null && c.getNext().getValue().equals(valueBefore)) {
                 Node newNext = new Node(newValue);
                 newNext.setNext(c.getNext());
                 c.setNext(newNext);
@@ -75,7 +75,7 @@ public class LinkedList {
     public void insertAfter (String valueAfter, String newValue) {
         Node c = this.head;
         while (c != null) {
-            if (c.getValue() == valueAfter) {
+            if (c.getValue().equals(valueAfter)) {
                 Node newNext = new Node(newValue);
                 newNext.setNext(c.getNext());
                 c.setNext(newNext);
@@ -84,4 +84,31 @@ public class LinkedList {
             c = c.getNext();
         }
     }
+
+    public String kthFromTheEnd (int k) {
+
+        Node c = this.head;
+        Node kth = this.head;
+        int counter;
+
+        if (c.getNext() == null && k == 0) {
+            return c.getValue();
+        }
+
+        //get current at least k positions from the start
+        for (counter = 0; counter < k; counter++) {
+            if (c != null) {
+                c = c.getNext();
+                counter++;
+            }
+        }
+
+        //walk the two nodes in step together until you hit the end
+        while (c != null && c.getNext() != null && kth != null && kth.getNext() != null) {
+            kth = kth.getNext();
+            c = c.getNext();
+        }
+        return kth.getValue();
+    }
+
 }
