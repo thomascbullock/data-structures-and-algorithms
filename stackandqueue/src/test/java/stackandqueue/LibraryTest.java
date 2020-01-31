@@ -12,6 +12,8 @@ public class LibraryTest {
     private Stack testStack = new Stack();
     private Queue testQueue = new Queue();
     private Queue testToStringQueue = new Queue();
+    private QueueOfStacks testQS = new QueueOfStacks();
+
 
     @Before public void setup(){
         testStack.push("valueOne");
@@ -46,5 +48,17 @@ public class LibraryTest {
 
     @Test public void testQueueToString(){
         assertEquals("valueOne -> valueTwo", testToStringQueue.toString());
+    }
+
+    @Test public void testQueueOfStacks(){
+        testQS.enqueue("A");
+        testQS.enqueue("B");
+        testQS.enqueue("C");
+        System.out.println(testQS.dequeue());
+        testQS.enqueue("D");
+        System.out.println(testQS.dequeue());
+        testQS.enqueue("E");
+        System.out.println(testQS.dequeue());
+        assertEquals("D", testQS.dequeue());
     }
 }

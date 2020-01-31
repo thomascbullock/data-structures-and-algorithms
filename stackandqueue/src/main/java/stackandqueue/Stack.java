@@ -20,6 +20,14 @@ public class Stack {
         return retVal;
     }
 
+    public String peek(){
+        if (this.top == null) {
+            return null;
+        } else {
+            return top.value;
+        }
+    }
+
     public String toString(){
         Node current = top;
         if (top == null) {
